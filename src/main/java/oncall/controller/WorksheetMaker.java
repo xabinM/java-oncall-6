@@ -10,13 +10,26 @@ public class WorksheetMaker {
 
     private void processRequestInput() {
         requestMonthAndDay();
-        requestWeekdayWorker();
-        requestHolidayWorker();
+        while (true){
+            try {
+                requestWeekdayWorker();
+                requestHolidayWorker();
+                return;
+            } catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
-    private void requestMonthAndDay() {
-        OutputView.requestMonthAndDay();
-        InputView.requestMonthAndDay();
+    private String[] requestMonthAndDay() {
+        while (true){
+            try {
+                OutputView.requestMonthAndDay();
+                return InputView.requestMonthAndDay();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private void requestWeekdayWorker() {
