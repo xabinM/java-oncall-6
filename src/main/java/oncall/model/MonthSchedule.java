@@ -1,6 +1,7 @@
 package oncall.model;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public enum MonthSchedule {
     JANUARY(1, 31, List.of(1)),
@@ -24,5 +25,20 @@ public enum MonthSchedule {
         this.month = month;
         this.day = day;
         this.holidays = holidays;
+    }
+
+    public static MonthSchedule getMonthScheduleByMonth(int targetMonth) {
+        return Stream.of(values())
+                .filter(monthSchedule -> monthSchedule.month == targetMonth)
+                .findFirst()
+                .get();
+    }
+
+    public boolean isHoliday(int day) {
+        return holidays.contains(day);
+    }
+
+    public int getDay() {
+        return day;
     }
 }
