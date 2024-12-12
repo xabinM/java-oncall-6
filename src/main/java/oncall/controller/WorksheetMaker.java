@@ -18,7 +18,7 @@ public class WorksheetMaker {
     }
 
     private MonthAndDayDTO processRequestMonthAndDay() {
-        while (true){
+        while (true) {
             try {
                 OutputView.requestMonthAndDay();
                 String[] monthAndDay = InputView.requestMonthAndDay();
@@ -30,10 +30,10 @@ public class WorksheetMaker {
     }
 
     private WorkersDTO processRequestWorkerNames() {
-        while (true){
+        while (true) {
             try {
                 return new WorkersDTO(requestWeekdayWorker(), requestHolidayWorker());
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }

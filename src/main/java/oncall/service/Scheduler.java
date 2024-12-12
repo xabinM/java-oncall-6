@@ -26,7 +26,7 @@ public class Scheduler {
         List<String> results = new ArrayList<>();
         for (int i = 1; i <= MonthSchedule.getMonthScheduleByMonth(month).getDay(); i++) {
             String worker = pickTodayWorker(i);
-            if (MonthSchedule.getMonthScheduleByMonth(month).isHoliday(i)){
+            if (MonthSchedule.getMonthScheduleByMonth(month).isHoliday(i)) {
                 String result = month + "월 " + i + "일 " + currentDayOfWeek + "(휴일) " + worker;
                 results.add(result);
                 currentDayOfWeek = getNextDayOfWeek();
@@ -41,13 +41,12 @@ public class Scheduler {
 
     private String pickTodayWorker(int day) {
         if (currentDayOfWeek.equals("토") || currentDayOfWeek.equals("일") ||
-                MonthSchedule.getMonthScheduleByMonth(month).isHoliday(day)){
+                MonthSchedule.getMonthScheduleByMonth(month).isHoliday(day)) {
             return getWorker(holidayWorkers);
         }
         return getWorker(weekdayWorkers);
     }
 
-    // 근무자 리스트를 순환하면서 get하는 메서드 필요
     private String getWorker(List<String> workers) {
         String worker;
         if (workers.get(0).equals(yesterdayWorker)) {
